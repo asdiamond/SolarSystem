@@ -9,13 +9,13 @@ import java.util.LinkedList;
  * Assignment: SolarSystem
  * Purpose:
  */
-public class Sun {
+public class Sun implements Plotable{
 
     private Collection<Planet> planets;
     private Color color = Color.yellow;
     private Dimension dim;
     private int x, y;
-    private int radius = 40;
+    private int radius = 20;
 
     private static Sun ourInstance = new Sun();
 
@@ -29,6 +29,8 @@ public class Sun {
 
     public void setDim(Dimension dim) {
         this.dim = dim;
+        this.x = dim.width / 2;
+        this.y = dim.height / 2;
     }
 
     //maybe refactor?
@@ -46,5 +48,15 @@ public class Sun {
 
     public void addPlanet(Planet planet){
         planets.add(planet);
+    }
+
+    @Override
+    public int getX() {
+        return this.x;
+    }
+
+    @Override
+    public int getY() {
+        return this.y;
     }
 }

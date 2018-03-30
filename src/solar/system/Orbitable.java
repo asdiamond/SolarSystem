@@ -7,33 +7,29 @@ import java.awt.*;
  * Assignment: SolarSystem
  * Purpose:
  */
-public abstract class Orbitable {
-    protected int radius;
-    protected Color color;
-    protected int center; //center of rotation
-    protected int distance;
-    protected int angle; //for polar coordinates
-    protected int speed;
+public abstract class Orbitable implements Plotable{
+    protected int radius = 8;
+    protected Color color = Color.gray;
+    protected int centerX, centerY; //center of rotation
+    protected int distance = 70;
+    protected int angle = 0; //for polar coordinates
+    protected int speed = 15;
 
-    public Orbitable(Color color, int center, int distance, int radius, int speed) {
-        this.color = color;
-        angle = 0;
-        this.center = center;
-        this.distance = distance;
-        this.radius = radius;
-        this.speed = speed;
+    public Orbitable(int centerX, int centerY) {
+        this.centerX = centerX;
+        this.centerY = centerY;
     }
 
     public int calX(int center, int distance, int angle){
-        return (int) (center + distance + Math.cos(Math.toRadians(angle)));
+        return (int) (center + distance * Math.cos(Math.toRadians(angle)));
     }
     public int calY(int center, int distance, int angle){
-        return (int) (center + distance + Math.sin(Math.toRadians(angle)));
+        return (int) (center + distance * Math.sin(Math.toRadians(angle)));
     }
 
     public void draw(Graphics g){
-        int x = calX(center, distance, angle);
-        int y = calY(center, distance, angle);
+        int x = calX(getX(), distance, angle);
+        int y = calY(getY(), distance, angle);
         angle = (angle + speed) % 360;
 
         g.setColor(color);
