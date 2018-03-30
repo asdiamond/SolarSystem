@@ -1,5 +1,7 @@
 package solar.system;
 
+import noapplet.NoApplet;
+
 import javax.swing.*;
 import java.applet.Applet;
 import java.awt.*;
@@ -9,7 +11,7 @@ import java.awt.*;
  * Assignment: SolarSystem
  * Purpose:
  */
-public class SolarSystemApplet extends Applet{
+public class SolarSystemApplet extends NoApplet {
     private Dimension dim;
     private Sun sun;
     private Timer timer;
@@ -23,7 +25,7 @@ public class SolarSystemApplet extends Applet{
         Planet venus = new Planet(sun, Color.red, 70, 10);
         venus.addMoon(new Moon(venus, 30, 30));
         sun.addPlanet(venus);
-//        sun.addPlanet(new Planet(sun, Color.green, 120, 25));
+        sun.addPlanet(new Planet(sun, Color.green, 120, 25));
 
         timer = new Timer(100, event -> repaint());
     }
@@ -43,5 +45,9 @@ public class SolarSystemApplet extends Applet{
     @Override
     public void stop() {
         timer.stop();
+    }
+
+    public static void main(String[] args) {
+        new SolarSystemApplet().run();
     }
 }

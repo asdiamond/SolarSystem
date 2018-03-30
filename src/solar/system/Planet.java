@@ -28,10 +28,10 @@ public class Planet extends Orbitable{
 
     @Override
     public void draw(Graphics g) {
-        super.draw(g);
         for(Moon moon : moons){
             moon.draw(g);
         }
+        super.draw(g);
     }
 
     public void addMoon(Moon m){

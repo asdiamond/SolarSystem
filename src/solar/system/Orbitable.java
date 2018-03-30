@@ -30,9 +30,9 @@ public abstract class Orbitable implements Plotable{
     public void draw(Graphics g){
         int x = calX(plotable.getX(), distance, angle);
         int y = calY(plotable.getY(), distance, angle);
-        angle = (angle + speed) % 360;
 
         g.setColor(color);
         g.fillOval(x - radius, y - radius, radius * 2, radius * 2);
+        angle = (angle + speed) % 360;
     }
 }
