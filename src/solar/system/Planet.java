@@ -14,8 +14,15 @@ public class Planet extends Orbitable{
     private Collection<Moon> moons;
 
     public Planet(Plotable o){
-        super(o.getX(), o.getY());
+        super(o);
         moons = new ArrayList<>();
+    }
+
+    public Planet(Plotable o, Color c, int distance, int speed){
+        this(o);
+        this.color = c;
+        this.distance = distance;
+        this.speed = speed;
     }
 
 
@@ -27,13 +34,17 @@ public class Planet extends Orbitable{
         }
     }
 
+    public void addMoon(Moon m){
+        moons.add(m);
+    }
+
     @Override
     public int getX() {
-        return this.centerX;
+        return calX(plotable.getX(), distance, angle);
     }
 
     @Override
     public int getY() {
-        return this.centerY;
+        return calY(plotable.getY(), distance, angle);
     }
 }

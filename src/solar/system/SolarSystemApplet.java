@@ -19,7 +19,12 @@ public class SolarSystemApplet extends Applet{
         dim = getSize();
         sun = Sun.getInstance();
         sun.setDim(dim);
-        sun.addPlanet(new Planet(sun));
+
+        Planet venus = new Planet(sun, Color.red, 70, 10);
+        venus.addMoon(new Moon(venus, 30, 30));
+        sun.addPlanet(venus);
+//        sun.addPlanet(new Planet(sun, Color.green, 120, 25));
+
         timer = new Timer(100, event -> repaint());
     }
 

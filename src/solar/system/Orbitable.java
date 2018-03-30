@@ -10,26 +10,26 @@ import java.awt.*;
 public abstract class Orbitable implements Plotable{
     protected int radius = 8;
     protected Color color = Color.gray;
-    protected int centerX, centerY; //center of rotation
+    protected Plotable plotable; //center of rotation, what is being orbited around
     protected int distance = 70;
     protected int angle = 0; //for polar coordinates
     protected int speed = 15;
 
-    public Orbitable(int centerX, int centerY) {
-        this.centerX = centerX;
-        this.centerY = centerY;
+    public Orbitable(Plotable p) {
+        this.plotable = p;
     }
 
     public int calX(int center, int distance, int angle){
         return (int) (center + distance * Math.cos(Math.toRadians(angle)));
     }
+
     public int calY(int center, int distance, int angle){
         return (int) (center + distance * Math.sin(Math.toRadians(angle)));
     }
 
     public void draw(Graphics g){
-        int x = calX(getX(), distance, angle);
-        int y = calY(getY(), distance, angle);
+        int x = calX(plotable.getX(), distance, angle);
+        int y = calY(plotable.getY(), distance, angle);
         angle = (angle + speed) % 360;
 
         g.setColor(color);
