@@ -9,11 +9,8 @@ import java.awt.*;
  */
 public class Moon extends Orbitable{
 
-    public Moon(Plotable o, int distance, int speed){
-        super(o);
-        this.color = Color.gray;
-        this.distance = distance;
-        this.speed = speed;
+    public Moon(Plotable o,Color c, int distance, int speed, int radius){
+        super(o, c, distance, speed, radius);
     }
 
     @Override
@@ -21,13 +18,4 @@ public class Moon extends Orbitable{
         super.draw(g);
     }
 
-    @Override
-    public int getX() {
-        return calX(plotable.getX(), distance, angle);
-    }
-
-    @Override
-    public int getY() {
-        return calY(plotable.getY(), distance, angle);
-    }
 }

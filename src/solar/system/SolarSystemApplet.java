@@ -3,7 +3,6 @@ package solar.system;
 import noapplet.NoApplet;
 
 import javax.swing.*;
-import java.applet.Applet;
 import java.awt.*;
 
 /**
@@ -22,10 +21,11 @@ public class SolarSystemApplet extends NoApplet {
         sun = Sun.getInstance();
         sun.setDim(dim);
 
-        Planet venus = new Planet(sun, Color.red, 70, 10);
-        venus.addMoon(new Moon(venus, 30, 30));
+        Planet venus = new Planet(sun, Color.red, 70, 10, 5);
+        venus.addMoon(new Moon(venus, Color.gray,25, 30, 2));
+        venus.addMoon(new Moon(venus, Color.blue, 25, 33, 3));
         sun.addPlanet(venus);
-        sun.addPlanet(new Planet(sun, Color.green, 120, 25));
+        sun.addPlanet(new Planet(sun, Color.green, 100, 15, 5));
 
         timer = new Timer(100, event -> repaint());
     }

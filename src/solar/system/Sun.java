@@ -29,8 +29,6 @@ public class Sun implements Plotable{
 
     public void setDim(Dimension dim) {
         this.dim = dim;
-        this.x = dim.width / 2;
-        this.y = dim.height / 2;
     }
 
     //maybe refactor?

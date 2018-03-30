@@ -8,15 +8,20 @@ import java.awt.*;
  * Purpose:
  */
 public abstract class Orbitable implements Plotable{
-    protected int radius = 8;
-    protected Color color = Color.gray;
+    protected int radius;
+    protected Color color;
     protected Plotable plotable; //center of rotation, what is being orbited around
-    protected int distance = 70;
+    protected int distance;
     protected int angle = 0; //for polar coordinates
-    protected int speed = 15;
+    protected int speed;
 
-    public Orbitable(Plotable p) {
-        this.plotable = p;
+
+    public Orbitable(Plotable o, Color c, int distance, int speed, int radius){
+        this.plotable = o;
+        this.distance = distance;
+        this.speed = speed;
+        this.radius = radius;
+        this.color = c;
     }
 
     public int calX(int center, int distance, int angle){
@@ -34,5 +39,15 @@ public abstract class Orbitable implements Plotable{
         g.setColor(color);
         g.fillOval(x - radius, y - radius, radius * 2, radius * 2);
         angle = (angle + speed) % 360;
+    }
+
+    @Override
+    public int getX() {
+        return calX(plotable.getX(), distance, angle);
+    }
+
+    @Override
+    public int getY() {
+        return calY(plotable.getY(), distance, angle);
     }
 }
